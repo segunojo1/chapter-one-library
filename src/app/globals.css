@@ -1,54 +1,58 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Dark mode variant */
 @custom-variant dark (&:is(.dark *));
 
+/* Theme (maps Tailwind tokens to CSS vars) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: #E7C9A5;
-  --color-primary-admin: #25388C;
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-xl: calc(var(--radius) + 4px);
-
   --font-ibm-plex-sans: "IBM Plex Sans", sans-serif;
   --font-bebas-neue: var(--bebas-neue);
 
-  /* Custom colors */
-  
+  --color-primary: #E7C9A5;
+  --color-primary-admin: #25388C;
 
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Custom colors */
   --color-green: #027A48;
   --color-green-100: #ECFDF3;
   --color-green-400: #4C7B62;
@@ -82,106 +86,23 @@
 
   --color-gray-100: #CBD5E1;
 
-  /* Radius */
-  
-
-  /* Screens */
-  /* @media (min-width: 480px) {
-    :root {
-      --breakpoint-xs: 480px;
-    }
-  }
-
-  /* Backgrounds */
-  /* --background-pattern: url('/images/pattern.webp'); */
+  /* Radii */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-
-:root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1:  oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
-
+/* Base layer: define light/dark vars */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
-}
-
-
-
-@layer base {
-  :root {
-    --radius: 0.5rem;
-  }
-
   .hide-scrollbar::-webkit-scrollbar {
     width: 0px;
     height: 0px;
@@ -200,205 +121,224 @@
   .hide-scrollbar::-webkit-scrollbar-thumb:hover {
     background: transparent;
   }
+
+  :root {
+    --radius: 0.625rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+  }
+
+  .dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
 }
 
 @layer components {
   .form-btn {
-    @apply bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base !important;
+        background-color: var(--color-primary) !important;
+        color: var(--color-dark-100) !important;
+        display: inline-flex !important;
+        min-height: 3.5rem !important;
+        width: 100% !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 0.375rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        font-weight: bold !important;
+        font-size: 1rem !important;
+        transition: background-color 0.2s;
+    }
+    .form-btn:hover {
+        background-color: #e7c9a5 !important; /* fallback for hover:bg-primary */
   }
 
   .form-input {
-    @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300 !important;
-  }
+  width: 100%;
+  min-height: 3.5rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-white, #fff);
+  background-color: var(--color-dark-300);
+  outline: none !important;
+}
+.form-input::placeholder {
+  font-weight: 400;
+  color: var(--color-light-100);
+}
 
-  /* Book Card */
+.book-title {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (min-width: 475px) {
   .book-title {
-    @apply mt-2 line-clamp-1 text-base font-semibold text-white xs:text-xl;
-  }
-
-  .book-genre {
-    @apply mt-1 line-clamp-1 text-sm italic text-light-100 xs:text-base;
-  }
-
-  .book-loaned {
-    @apply flex flex-row items-center gap-1 max-xs:justify-center;
-  }
-
-  .book-btn {
-    @apply bg-dark-600 mt-3 min-h-14 w-full font-bebas-neue text-base text-primary;
-  }
-
-  /* Borrowed Book */
-  .borrowed-book {
-    @apply gradient-vertical p-5 rounded-2xl xs:w-min w-full relative;
-  }
-
-  .borrowed-book_cover {
-    @apply py-4 lg:px-16 px-10 flex justify-center items-center w-full rounded-lg;
-  }
-
-  /* Book Cover */
-  .book-cover_extra_small {
-    @apply w-[28.95px] h-10;
-  }
-
-  .book-cover_small {
-    @apply w-[55px] h-[76px];
-  }
-
-  .book-cover_medium {
-    @apply w-[144px] h-[199px];
-  }
-
-  .book-cover_regular {
-    @apply xs:w-[174px] w-[114px] xs:h-[239px] h-[169px];
-  }
-
-  .book-cover_wide {
-    @apply xs:w-[296px] w-[256px] xs:h-[404px] h-[354px];
-  }
-
-  /* Book List */
-  .book-list {
-    @apply mt-10 flex flex-wrap gap-5 max-xs:justify-between xs:gap-10;
-  }
-
-  /* Book Overview */
-  .book-overview {
-    @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8;
-  }
-
-  .book-overview h1 {
-    @apply text-5xl font-semibold text-white md:text-7xl;
-  }
-
-  .book-info {
-    @apply mt-7 flex flex-row flex-wrap gap-4 text-xl text-light-100;
-  }
-
-  .book-copies {
-    @apply flex flex-row flex-wrap gap-4 mt-1;
-  }
-
-  .book-copies p {
-    @apply text-xl text-light-100;
-  }
-
-  .book-copies p span {
-    @apply ml-2 font-semibold text-primary;
-  }
-
-  .book-description {
-    @apply mt-2 text-justify text-xl text-light-100;
-  }
-
-  .book-overview_btn {
-    @apply mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full !important;
-  }
-
-  /* File Upload */
-  .upload-btn {
-    @apply flex min-h-14 w-full items-center justify-center gap-1.5 rounded-md;
-  }
-
-  .upload-filename {
-    @apply mt-1 text-center text-xs;
-  }
-
-  .progress {
-    @apply rounded-full bg-green-800 p-0.5 text-center font-bebas-neue text-[8px] font-bold leading-none text-light-100;
-  }
-
-  /* Search */
-  .search {
-    @apply relative mt-10 flex min-h-14 w-full items-center rounded-xl bg-dark-300 px-4;
-  }
-
-  .search-input {
-    @apply w-full border-none font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none !important;
-  }
-
-  /* Book Receipt */
-  .book-receipt_admin-btn {
-    @apply bg-light-300 rounded-md text-primary-admin font-semibold hover:bg-light-300/80 !important;
-  }
-
-  /* Book Ticket */
-  #book-ticket {
-    @apply relative mt-10 hidden w-[544px] overflow-hidden bg-dark-300 py-8;
-  }
-
-  #book-ticket #book-details div {
-    @apply space-y-1 rounded-md border border-light-100/10 p-3;
-  }
-
-  #book-ticket #book-details div p:first-child {
-    @apply text-xs text-light-700;
-  }
-
-  #book-ticket #book-details div p:last-child {
-    @apply text-sm font-bold text-white;
-  }
-
-  #book-ticket #book-divider div:first-child {
-    @apply absolute -left-3.5 top-1/2 size-7 -translate-y-1/2 rounded-full bg-black;
-  }
-
-  #book-ticket #book-divider div:last-child {
-    @apply absolute -right-3.5 top-1/2 size-7 -translate-y-1/2 rounded-full bg-black;
-  }
-
-  .book-ticket-circles {
-    @apply absolute inset-x-0 -bottom-6 flex flex-row gap-1.5;
-  }
-
-  /* Not Found */
-  #not-found {
-    @apply flex justify-center items-center flex-col text-center w-full;
-  }
-
-  #not-found h4 {
-    @apply text-white mt-6 font-semibold text-2xl;
-  }
-
-  #not-found p {
-    @apply text-light-100 w-[360px] mt-1;
-  }
-
-  .not-found-btn {
-    @apply bg-primary font-bebas-neue min-w-[360px] mt-6 text-dark-100 text-xl hover:bg-primary/90 min-h-12 !important;
-  }
-
-  /* Pagination */
-  #pagination {
-    @apply flex flex-row justify-end gap-3;
-  }
-
-  .pagination-btn_light {
-    @apply bg-light-300 text-dark-300 hover:bg-light-300/70 !important;
-  }
-
-  .pagination-btn_dark {
-    @apply bg-dark-300 hover:bg-dark-100 !important;
-  }
-
-  #pagination p {
-    @apply text-sm inline-flex items-center font-semibold px-4 py-1.5 rounded-md text-center;
-  }
-
-  /* Sort */
-  .select-trigger {
-    @apply w-40 h-10 px-4 bg-dark-300 text-light-100 border-dark-100 !important;
-  }
-
-  .select-content {
-    @apply bg-dark-300 text-light-100 border-dark-100 !important;
-  }
-
-  .select-item {
-    @apply focus:bg-dark-600 focus:text-light-100 !important;
+    font-size: 1.25rem;
   }
 }
+
+.book-genre {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--color-light-100);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (min-width: 475px) {
+  .book-genre {
+    font-size: 1rem;
+  }
+}
+
+.book-loaned {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+}
+@media (max-width: 475px) {
+  .book-loaned {
+    justify-content: center;
+  }
+}
+
+.book-btn {
+  margin-top: 0.75rem;
+  min-height: 3.5rem;
+  width: 100%;
+  font-family: var(--font-bebas-neue);
+  font-size: 1rem;
+  color: var(--color-primary);
+  background-color: var(--color-dark-600);
+}
+
+.borrowed-book {
+  background: var(--gradient-vertical);
+  padding: 1.25rem;
+  border-radius: 1rem;
+  width: 100%;
+  position: relative;
+}
+@media (min-width: 475px) {
+  .borrowed-book {
+    width: min-content;
+  }
+}
+
+.borrowed-book_cover {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .borrowed-book_cover {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.book-cover_extra_small { width: 28.95px; height: 2.5rem; }
+.book-cover_small { width: 55px; height: 76px; }
+.book-cover_medium { width: 144px; height: 199px; }
+.book-cover_regular { width: 114px; height: 169px; }
+@media (min-width: 475px) {
+  .book-cover_regular { width: 174px; height: 239px; }
+}
+.book-cover_wide { width: 256px; height: 354px; }
+@media (min-width: 475px) {
+  .book-cover_wide { width: 296px; height: 404px; }
+}
+
+.book-list {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+@media (max-width: 475px) {
+  .book-list { justify-content: space-between; }
+}
+@media (min-width: 475px) {
+  .book-list { gap: 2.5rem; }
+}
+
+}
+
 
 @layer utilities {
   .gradient-vertical {
@@ -413,103 +353,132 @@
     background: linear-gradient(180deg, #232839 0%, #12141d 100%);
   }
 
-  /* Auth */
   .auth-container {
-    @apply relative flex flex-col-reverse text-light-100 sm:flex-row;
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    color: #f8f9fa;
+  }
+  @media (min-width: 640px) {
+    .auth-container {
+      flex-direction: row;
+    }
   }
 
   .auth-form {
-    @apply my-auto flex h-full min-h-screen flex-1 items-center bg-pattern bg-cover bg-top bg-dark-100 px-5 py-10;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
+    flex: 1 1 0%;
+    align-items: center;
+    background-image: url('/path/to/pattern');
+    background-size: cover;
+    background-position: top;
+    background-color: #12141d;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .auth-box {
-    @apply gradient-vertical mx-auto flex max-w-xl flex-col gap-6 rounded-lg p-10;
+    background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    max-width: 36rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 0.5rem;
+    padding: 2.5rem;
   }
 
   .auth-illustration {
-    @apply sticky h-40 w-full sm:top-0 sm:h-screen sm:flex-1;
+    position: sticky;
+    height: 10rem;
+    width: 100%;
+  }
+  @media (min-width: 640px) {
+    .auth-illustration {
+      top: 0px;
+      height: 100vh;
+      flex: 1 1 0%;
+    }
   }
 
-  /* Root */
   .root-container {
-    @apply flex min-h-screen flex-1 flex-col bg-pattern bg-cover bg-top bg-dark-100 px-5 xs:px-10 md:px-16;
+    display: flex;
+    min-height: 100vh;
+    flex: 1 1 0%;
+    flex-direction: column;
+    background-image: url('/path/to/pattern');
+    background-size: cover;
+    background-position: top;
+    background-color: #12141d;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  @media (min-width: 475px) {
+    .root-container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .root-container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
   }
 
-  /* Book Details */
   .book-details {
-    @apply lg:mt-36 mt-16 mb-20 flex flex-col gap-16 lg:flex-row;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  @media (min-width: 1024px) {
+    .book-details {
+      margin-top: 9rem;
+      flex-direction: row;
+    }
   }
 
   .book-details h3 {
-    @apply text-xl font-semibold text-primary;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #3b82f6;
   }
 
-  /* Library */
   .library {
-    @apply mx-auto flex max-w-xl w-full flex-col text-center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    max-width: 36rem;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
   }
 
   .library-subtitle {
-    @apply text-lg font-semibold uppercase text-light-100;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #f8f9fa;
   }
 
   .library-title {
-    @apply mt-2 text-3xl font-semibold text-white xs:text-5xl;
+    margin-top: 0.5rem;
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #fff;
   }
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+  @media (min-width: 475px) {
+    .library-title {
+      font-size: 3rem;
+    }
   }
 }

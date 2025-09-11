@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <Button>
-        click m
+        click me
       </Button>
     </div>
   );
