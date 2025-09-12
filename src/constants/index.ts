@@ -1,4 +1,61 @@
-export const testbooks = [
+export const navigationLinks = [
+  {
+    href: "/library",
+    label: "Library",
+  },
+
+  {
+    img: "/icons/user.svg",
+    selectedImg: "/icons/user-fill.svg",
+    href: "/my-profile",
+    label: "My Profile",
+  },
+];
+
+export const adminSideBarLinks = [
+  {
+    img: "/icons/admin/home.svg",
+    route: "/admin",
+    text: "Home",
+  },
+  {
+    img: "/icons/admin/users.svg",
+    route: "/admin/users",
+    text: "All Users",
+  },
+  {
+    img: "/icons/admin/book.svg",
+    route: "/admin/books",
+    text: "All Books",
+  },
+  {
+    img: "/icons/admin/bookmark.svg",
+    route: "/admin/book-requests",
+    text: "Borrow Requests",
+  },
+  {
+    img: "/icons/admin/user.svg",
+    route: "/admin/account-requests",
+    text: "Account Requests",
+  },
+];
+
+export const FIELD_NAMES = {
+  fullName: "Full name",
+  email: "Email",
+  universityId: "University ID Number",
+  password: "Password",
+  universityCard: "Upload University ID Card",
+};
+
+export const FIELD_TYPES = {
+  fullName: "text",
+  email: "email",
+  universityId: "number",
+  password: "password",
+};
+
+export const sampleBooks = [
   {
     id: 1,
     title: "The Midnight Library",
@@ -30,7 +87,6 @@ export const testbooks = [
     video: "/sample-video.mp4?updatedAt=1722593504152",
     summary:
       "A revolutionary guide to making good habits, breaking bad ones, and getting 1% better every day.",
-      isLoanedBook: true
   },
   {
     id: 3,
