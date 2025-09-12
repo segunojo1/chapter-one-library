@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn, getInitials } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -15,7 +15,7 @@ const Header = ({session}: { session: Session | null }) => {
         <Link href={"/"}>
           <Image src='/icons/logo.svg' alt='Chapter One Logo' width={40} height={40} className=''/>
         </Link>
-        <ul className='flex flex-col items-center gap-8'>
+        <ul className='flex items-center gap-8'>
             <li>
                 <Link href="/library" className={cn('text-base cursor-pointer capitalize', pathname == '/' ? 'text-light-200' : 'text-light-100')}>
                     Library
@@ -25,7 +25,7 @@ const Header = ({session}: { session: Session | null }) => {
             <li>
               <Link href="/my-profile">
                 <Avatar>
-                  <AvatarFallback className='text-white'>{session?.user?.name}</AvatarFallback>
+                  <AvatarFallback className='text-black bg-amber-100'>{getInitials(session?.user?.name || 'IN')}</AvatarFallback>
                 </Avatar>
               </Link>
             </li>
