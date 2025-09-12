@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,6 +25,8 @@ import Link from "next/link";
 import { FIELD_NAMES } from "@/constants";
 import { FIELD_TYPES } from "@/constants";
 import ImageUpload from "./ImageUpload";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -41,6 +42,7 @@ const AuthForm = <T extends FieldValues>({
   onSubmit,
 }: Props<T>) => {
   const isSignIn = type === "SIGN_IN";
+  const router = useRouter();
 
   const form: UseFormReturn<FieldValues, any, T> = useForm({
     resolver: zodResolver(schema),
@@ -48,7 +50,17 @@ const AuthForm = <T extends FieldValues>({
   });
 
   // 2. Define a submit handler.
-  const handleSubmit: SubmitHandler<T> = async (data) => {};
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+    const result = await onSubmit(data);
+
+    if (result.success) {
+      toast(isSignIn ? "Signed in successfully" : "Account created successfully");
+
+      router.push("/");
+    } else{
+        toast(`Error ${isSignIn ? "signing in" : "creating account"}: ${result.error || "Please try again later."}`, {type: "error"})
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -58,7 +70,8 @@ const AuthForm = <T extends FieldValues>({
       <p className="text-light-100">
         {isSignIn
           ? "Access vast collection of resources nd stay updated."
-          : "Please fill in the information below to create your account."}
+          : "Please fill in the information below to create your account."
+        }
       </p>
       <Form {...form}>
         <form
@@ -89,9 +102,6 @@ const AuthForm = <T extends FieldValues>({
                       />
                     )}
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

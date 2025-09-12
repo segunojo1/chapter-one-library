@@ -669,6 +669,7 @@
     margin-top: auto;
     margin-bottom: auto;
     display: flex;
+    flex-direction: column;
     height: 100%;
     min-height: 100vh;
     flex: 1 1 0%;
@@ -681,7 +682,7 @@
     padding-right: 1.25rem;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
-  }
+  }  
 
   .auth-box {
     background: linear-gradient(180deg, #12141d 0%, #12151f 100%);

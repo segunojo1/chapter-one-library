@@ -8,7 +8,7 @@ export const usersTable = pgTable('users_table', {
   id: uuid('id').notNull().primaryKey().defaultRandom().unique(),
   fullName: varchar('full_name', { length: 255 }).notNull(),
   email: text('email').notNull().unique(),
-  universityid: integer('university_id').notNull().unique(),
+  universityId: integer('university_id').notNull().unique(),
   password: text('password').notNull(),
   universityCard: text('university_card').notNull(),
   status: STATUS_ENUM('status').notNull().default('PENDING'),
