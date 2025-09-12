@@ -10,7 +10,7 @@ import {
   useForm,
   UseFormReturn,
 } from "react-hook-form";
-import z, { ZodType } from "zod";
+import { ZodType } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -34,9 +34,15 @@ interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
 }
 
-const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit }: Props<T>) => {
+const AuthForm = <T extends FieldValues>({
+  type,
+  schema,
+  defaultValues,
+  onSubmit,
+}: Props<T>) => {
   const isSignIn = type === "SIGN_IN";
-  const form: UseFormReturn<T> = useForm({
+
+  const form: UseFormReturn<FieldValues, any, T> = useForm({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   });
@@ -71,7 +77,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <ImageUpload />
+                      <ImageUpload onFileChange={field.onChange}/>
                     ) : (
                       <Input
                         required
@@ -91,7 +97,9 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
               )}
             />
           ))}
-          <Button type="submit" className="form-btn">{isSignIn ? "Sign In" : "Sign Up"}</Button>
+          <Button type="submit" className="form-btn">
+            {isSignIn ? "Sign In" : "Sign Up"}
+          </Button>
         </form>
       </Form>
 
