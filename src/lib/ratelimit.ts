@@ -1,10 +1,10 @@
 import { Ratelimit } from "@upstash/ratelimit"; // for deno: see above
-import { Redis } from "@upstash/redis";
+import redis from "../../database/redis";
 
 // Create a new ratelimiter, that allows 10 requests per 10 seconds
 const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(10, "10 s"),
+  redis,
+  limiter: Ratelimit.fixedWindow(10, "5m"),
   analytics: true,
   /**
    * Optional prefix for the keys used in redis. This is useful if you want to share a redis
@@ -14,13 +14,4 @@ const ratelimit = new Ratelimit({
   prefix: "@upstash/ratelimit",
 });
 
-// Use a constant string to limit all requests with a single ratelimit
-// Or use a userID, apiKey or ip address for individual limits.
-const identifier = "api";
-const { success } = await ratelimit.limit(identifier);
-
-if (!success) {
-  return "Unable to process at this time";
-}
-doExpensiveCalculation();
-return "Here you go!";
+export default ratelimit;
