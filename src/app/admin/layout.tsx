@@ -1,9 +1,17 @@
 import React, { ReactNode } from 'react'
+import { auth } from '../../../auth'
+import { redirect } from 'next/navigation';
 
-const Layout = ({children}: {children: ReactNode}) => {
+import '@/styles/admin.css'
+import Sidebar from '@/components/admin/Sidebar';
+
+const Layout = async ({children}: {children: ReactNode}) => {
+  const session = await auth();
+
+  if (!session?.user?.id) redirect('sign-in')
   return (
     <main className='flex min-h-screen w-full flex-row'>
-        <p>Sidebar</p>
+        <Sidebar session={session}/>
         <div className="admin-container">
             <p>Header</p>
             {children}
@@ -12,4 +20,4 @@ const Layout = ({children}: {children: ReactNode}) => {
   )
 }
 
-export default Layout
+export default Layout 
