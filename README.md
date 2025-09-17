@@ -51,8 +51,8 @@ Chapter one is a book management system that just allows you view books and borr
 - Create new book 
 
 To login to admin account use these details:
-email: **example@gmail.com**
-password: **example123**
+- email: **example@gmail.com**
+- password: **example123**
 
 # Features
 - Sign and Login with your student information
