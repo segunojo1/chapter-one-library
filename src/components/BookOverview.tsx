@@ -11,7 +11,7 @@ interface Props extends Book {
   userId: string;
 }
 
-const BookOverview = ({
+const BookOverview = async ({
   title,
   author,
   genre,
@@ -22,20 +22,25 @@ const BookOverview = ({
   coverColor,
   coverUrl,
   id,
-  userId
+  userId,
 }: Props) => {
-
-  const {user} = await db.select().from(usersTable).where(eq(usersTable.id, userId))
-  .limit(1)
+  const [ user ] = await db
+    .select()
+    .from(usersTable)
+    .where(eq(usersTable.id, userId))
+    .limit(1);
 
   if (!user) {
-    return null
+    return null;
   }
 
   const borrowEligibility = {
-    isEligible: availableCopies > 0 && user.status == 'APPROVED',
-    message: availableCopies <= 0 ? 'Book is not available' : 'You are not eligible to borrow this book'
-  }
+    isEligible: availableCopies > 0 && user.status == "APPROVED",
+    message:
+      availableCopies <= 0
+        ? "Book is not available"
+        : "You are not eligible to borrow this book",
+  };
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">
@@ -70,8 +75,11 @@ const BookOverview = ({
 
         <p className="book-description">{description}</p>
 
-        
-        <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowEligibility} />
+        <BorrowBook
+          bookId={id}
+          userId={userId}
+          borrowingEligibility={borrowEligibility}
+        />
       </div>
 
       <div className="relative flex flex-1 justify-center">
@@ -85,11 +93,11 @@ const BookOverview = ({
 
           <div className="absolute left-16 top-10 rotate-12 opacity-40 blur-sm max-sm:hidden">
             <BookCover
-            variant="wide"
-            className="z-10"
-            coverColor={coverColor}
-            coverImage={coverUrl}
-          />
+              variant="wide"
+              className="z-10"
+              coverColor={coverColor}
+              coverImage={coverUrl}
+            />
           </div>
         </div>
       </div>

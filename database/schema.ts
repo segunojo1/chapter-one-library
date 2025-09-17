@@ -38,7 +38,7 @@ export const books = pgTable('books', {
 export const borrowRecords = pgTable("borrow_records", {
   id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
   userId: uuid("user_id")
-  .references(() => books.id)
+  .references(() => usersTable.id)
   .notNull(),
   bookId: uuid("book_id")
   .references(() => books.id)
