@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useState } from "react";
 import {
   DefaultValues,
   FieldValues,
@@ -44,6 +44,7 @@ const AuthForm = <T extends FieldValues>({
 }: Props<T>) => {
   const isSignIn = type === "SIGN_IN";
   const router = useRouter();
+  const [loading, setLoading] = useState(false)
 
   const form: UseFormReturn<FieldValues, any, T> = useForm({
     resolver: zodResolver(schema),
@@ -52,6 +53,7 @@ const AuthForm = <T extends FieldValues>({
 
   // 2. Define a submit handler.
   const handleSubmit: SubmitHandler<T> = async (data) => {
+    setLoading(true)
     const result = await onSubmit(data);
 
     if (result.success) {
@@ -61,6 +63,7 @@ const AuthForm = <T extends FieldValues>({
     } else{
         toast(`Error ${isSignIn ? "signing in" : "creating account"}: ${result.error || "Please try again later."}`, {type: "error"})
     }
+    setLoading(false)
   };
 
   return (
@@ -108,8 +111,8 @@ const AuthForm = <T extends FieldValues>({
               )}
             />
           ))}
-          <Button type="submit" className="form-btn">
-            {isSignIn ? "Sign In" : "Sign Up"}
+          <Button type="submit" className="form-btn cursor-pointer">
+            {loading ? "Loading.." : isSignIn ? "Sign In" : "Sign Up"}
           </Button>
         </form>
       </Form>

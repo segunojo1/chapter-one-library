@@ -7,11 +7,14 @@ import Sidebar from "@/components/admin/Sidebar";
 import { db } from "../../../database/drizzle";
 import { eq } from "drizzle-orm";
 import { usersTable } from "../../../database/schema";
+import Header from "@/components/Header";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
 
-  if (!session?.user?.id) redirect("sign-in");
+  if (!session?.user?.id) redirect("/sign-in");
 
   const isAdmin = await db
     .select({ isAdmin: usersTable.role })
@@ -20,13 +23,14 @@ const Layout = async ({ children }: { children: ReactNode }) => {
     .limit(1)
     .then((res) => res[0]?.isAdmin === "ADMIN");
 
-    if(!isAdmin) redirect('/')
+  if (!isAdmin) redirect("/");
 
   return (
     <main className="flex min-h-screen w-full flex-row">
       <Sidebar session={session} />
       <div className="admin-container">
-        <p>Header</p>
+        <Header />
+
         {children}
       </div>
     </main>
