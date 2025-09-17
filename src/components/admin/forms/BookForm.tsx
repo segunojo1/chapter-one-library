@@ -53,7 +53,7 @@ const BookForm = ({ type, ...book }: Props) => {
     if(result.success) {
         toast("Book created successfully")
 
-        router.push(`/admin/books/${result.data.id}`)
+        router.push(`/books/${result.data.id}`)
     } else{
         toast(result.message);  
         
@@ -281,7 +281,7 @@ const BookForm = ({ type, ...book }: Props) => {
           )}
         />
 
-        <Button type="submit" className="book-form_btn text-white">
+        <Button type="submit" className="book-form_btn text-white ">
           Add Book to Library
         </Button>
       </form>

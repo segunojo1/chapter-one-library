@@ -112,9 +112,6 @@
   width: 100%;
   background-color: var(--color-primary-admin);
 }
-.book-form_btn:hover {
-  background-color: rgba(var(--color-primary-admin), 0.95);
-}
 
 /* Home Page */
 .view-btn {
